@@ -1,0 +1,51 @@
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+    padding: 5px;
+    font-style: oblique;
+}
+
+body {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 10px;
+}
+
+th {
+    text-align: left;
+}
+
+.th1 {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+label {
+    width: 150px;
+    display: inline-block;
+    font-style: italic;
+}
+
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.tagsHeader{
+    text-align: center;
+    font-style: italic;
+}
+
+.button:hover {
+    background-color: #f50724;
+}

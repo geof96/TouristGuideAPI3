@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Tourist Attraction</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<h2>Add Tourist Attraction</h2>
+<form action="save" method="post">
+    <label for="name" th:color="brown">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description"></textarea><br>
+
+    <label for="city">City:</label><br>
+    <select id="city" name="city">
+        <option th:each="city : ${city}" th:value="${city}" th:text="${city}"></option>
+    </select><br>
+
+    <label for="tags">Tags:</label><br>
+    <div th:each="tag : ${tags}">
+        <input type="checkbox" id="tags" name="tags" th:value="${tag}" th:text="${tag}"><br>
+
+    </div>
+    <input type="submit" value="Submit" th:href="@{attractions/save}">
+</form>
+</body>
+</html>
