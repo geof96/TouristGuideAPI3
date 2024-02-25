@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-
 @Controller
 @RequestMapping("attractions")
 public class TouristController {
@@ -46,15 +45,19 @@ public class TouristController {
         return "redirect:/attractions";
     }
 
-    @GetMapping
-    public String editAttraction(Model model){
-        model.addAttribute("attraction", new TouristAttraction());
-        return "editHtml";
+    @GetMapping("/{name}/edit")
+    public String editAttraction(@PathVariable String name, Model model) {
+        model.addAttribute("attraction", touristService.getTouristAttractionById(name));
+        model.addAttribute("city", touristService.getCityList());
+        model.addAttribute("tags", touristService.getTagList());
+
+
+        return "updateAttraction";
     }
 
-    @PostMapping("updateAttraction")
+    @PostMapping("/update")
     public String updateAttraction(@ModelAttribute TouristAttraction touristAttraction, Model model) {
-        model.addAttribute(touristService.updateTouristAttraction(touristAttraction));
+        model.addAttribute("editedAttraction", touristService.updateTouristAttraction(touristAttraction));
         return "redirect:/attractions";
     }
 
@@ -66,8 +69,9 @@ public class TouristController {
         }
         return "redirect/attractions";
     }
+
     @GetMapping("/{name}/tags")
-    public String getTags(Model model) {
+    public String getTags(@PathVariable String name, Model model) {
         model.addAttribute("tags", touristService.getTagList());
         return "tags";
     }

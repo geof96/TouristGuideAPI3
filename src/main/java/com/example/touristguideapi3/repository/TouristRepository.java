@@ -46,6 +46,8 @@ public class TouristRepository {
             if (attraction.getName().equals(updatedTouristAttraction.getName())) {
                 attraction.setName(updatedTouristAttraction.getName());
                 attraction.setDescription(updatedTouristAttraction.getDescription());
+                attraction.setCity(updatedTouristAttraction.getCity());
+                attraction.setTagList(updatedTouristAttraction.getTagList());
 
             }
         }
