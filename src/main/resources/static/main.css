@@ -49,3 +49,7 @@ label {
 .button:hover {
     background-color: #f50724;
 }
+
+.submit-button:hover {
+color: cyan;
+}

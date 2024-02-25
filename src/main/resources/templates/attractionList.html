@@ -9,13 +9,15 @@
 <table>
     <thead>
     <tr class="table-header1">
-        <th colspan="3" class="th1">Tourist Attractions</th>
+        <th colspan="4" class="th1">Tourist Attractions</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Tags</th>
+        <th>Delete</th>
     </tr>
     <tr th:each="attraction : ${attractions}">
 
@@ -25,6 +27,14 @@
             <a th:href="@{'attractions/' + ${attraction.name} + '/tags'}">
                 <input type="button" value="Tags" class="button">
             </a>
+        </td>
+        <td>
+            <a th:href="@{'attractions/' + ${attraction.name} + '/deleteAttraction'}">
+                <input type="button" value="Delete" class="button">
+            </a>
+        </td>
+        <td>
+            <a th:href="@{}"
         </td>
     </tr>
     </tbody>

@@ -2,9 +2,7 @@ package com.example.touristguideapi3.repository;
 
 import com.example.touristguideapi3.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -12,19 +10,16 @@ import java.util.List;
 public class TouristRepository {
 
     private List<TouristAttraction> touristAttractions = new ArrayList<>(List.of(
-            new TouristAttraction("Minneapolis", "City of Somalis", "Minnesota",
+            new TouristAttraction("Mall of America", "City of Somalis", "Minnesota",
                     List.of("Mall", "Museum")),
-            new TouristAttraction("Vegas", "What happens in vegas, stays in Vegas", "Nevada",
+            new TouristAttraction("Las Vegas Boulevard", "What happens in vegas, stays in Vegas", "Nevada",
                     List.of("Casino", "Museum")),
             new TouristAttraction("Los Angeles", "Home of hollywood", "California",
                     List.of("Beaches", "Parks"))
     ));
 
 
-
-
     public List<TouristAttraction> getAllTouristAttractions() {
-
         return touristAttractions;
     }
 
@@ -70,10 +65,8 @@ public class TouristRepository {
     }
 
     public List<String> getTags() {
-        for (TouristAttraction attraction : touristAttractions) {
-                return attraction.getTagList();
-        }
-        return Collections.emptyList();
+        List<String> allTags = new ArrayList<>(List.of("Museum", "Park", "Beach", "Cinema", "Paddel", "Stadium"));
+        return allTags;
     }
 
     public List<String> getCities() {
@@ -83,4 +76,6 @@ public class TouristRepository {
         }
         return cityList;
     }
+
+
 }
