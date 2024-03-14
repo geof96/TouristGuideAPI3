@@ -7,20 +7,14 @@
 </head>
 <body>
 <table>
-    <thead>
-    <tr>
-        <th colspan="2" class="tagsHeader">Tags</th>
-    </tr>
+    <thead th:each="attraction: ${attractions}" th:if="${attraction.name eq name}">
+    <td th:text="${attraction.name}"></td>
     </thead>
     <tbody>
-    <tr th:each="tag , index : ${tags}">
-        <td th:text="${index.index + 1}"></td>
+    <tr th:each="tag: ${tags}">
         <td th:text="${tag}"></td>
     </tr>
     </tbody>
 </table>
-<a th:href="@{/attractions}">
-    <input type="button" value="Return to main page" class="button">
-</a>
 </body>
 </html>

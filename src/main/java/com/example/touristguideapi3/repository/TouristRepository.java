@@ -2,6 +2,7 @@ package com.example.touristguideapi3.repository;
 
 import com.example.touristguideapi3.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,9 +69,38 @@ public class TouristRepository {
     }
 
     public List<String> getTags() {
-        List<String> allTags = new ArrayList<>(List.of("Museum", "Park", "Beach", "Cinema", "Paddel", "Stadium", "Animals", "Kid friendly", "Free", "Cafe", "Games"));
+        List<String> allTags = new ArrayList<>(List.of(
+                "Museum",
+                "Park",
+                "Beach",
+                "Cinema",
+                "Paddel",
+                "Stadium",
+                "Animals",
+                "Kid friendly",
+                "Free",
+                "Cafe",
+                "Games"));
         return allTags;
     }
+
+    public List<String> singleTags() {
+        List<String> taglist2 = new ArrayList<>();
+        for (String string : getTags()) {
+            taglist2.add(string);
+        }
+        return taglist2;
+    }
+
+    public List<String>getAttractionsTags(String name){
+        for (TouristAttraction touristAttraction: touristAttractions){
+            if (touristAttraction.getName().equalsIgnoreCase(name)){
+                return touristAttraction.getTagList();
+            }
+        }
+        return null;
+    }
+
 
     public List<String> getCities() {
         List<String> cityList = new ArrayList<>();

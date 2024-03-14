@@ -49,7 +49,7 @@ public class TouristController {
     public String editAttraction(@PathVariable String name, Model model) {
         model.addAttribute("attraction", touristService.getTouristAttractionById(name));
         model.addAttribute("city", touristService.getCityList());
-        model.addAttribute("tags", touristService.getTagList());
+        model.addAttribute("tags", touristService.getTagList2());
 
 
         return "updateAttraction";
@@ -72,7 +72,9 @@ public class TouristController {
 
     @GetMapping("/{name}/tags")
     public String getTags(@PathVariable String name, Model model) {
-        model.addAttribute("tags", touristService.getTagList());
+        model.addAttribute("tags", touristService.getAttractionsTags(name));
+        model.addAttribute("attractions", touristService.getAllTouristAttractions());
+        model.addAttribute("name", name);
         return "tags";
     }
 }
