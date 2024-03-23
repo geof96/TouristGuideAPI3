@@ -1,24 +1,28 @@
 package com.example.touristguideapi3.connectionManager;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    private static Connection conn;
+    private static Connection con;
+
+
 
     public static Connection getConnection(String db_url, String uid, String pwd) {
 
-        if (conn != null) return conn;
+        if (con != null) return con;
 
         try {
-            conn = DriverManager.getConnection(db_url, uid, pwd);
+            con = DriverManager.getConnection(db_url, uid, pwd);
 
         } catch (SQLException e) {
-            System.out.println("Couldn't connect to db");
+            System.out.println("Couldn't connect to database.");
             e.printStackTrace();
         }
-        return conn;
+        return con;
     }
 
 }

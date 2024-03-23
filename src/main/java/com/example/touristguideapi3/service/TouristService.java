@@ -1,15 +1,16 @@
 package com.example.touristguideapi3.service;
 
-
 import com.example.touristguideapi3.model.TouristAttraction;
 import com.example.touristguideapi3.repository.TouristRepository;
+import com.example.touristguideapi3.repository.TouristRepositoryDB;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class TouristService {
+
     private TouristRepository touristRepository = new TouristRepository();
+
 
     public List<TouristAttraction> getAllTouristAttractions() {
         return touristRepository.getAllTouristAttractions();

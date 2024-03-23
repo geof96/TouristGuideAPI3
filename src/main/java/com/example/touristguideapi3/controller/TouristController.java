@@ -2,6 +2,7 @@ package com.example.touristguideapi3.controller;
 
 import com.example.touristguideapi3.model.TouristAttraction;
 import com.example.touristguideapi3.service.TouristService;
+import com.example.touristguideapi3.service.TouristServiceDB;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,16 +12,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("attractions")
 public class TouristController {
 
+    //From Stub-methods
     private TouristService touristService;
+    //From Database
+    private TouristServiceDB touristServiceDB;
 
 
-    public TouristController(TouristService touristService) {
+    public TouristController(TouristService touristService, TouristServiceDB touristServiceDB) {
         this.touristService = touristService;
+        this.touristServiceDB = touristServiceDB;
     }
 
     @GetMapping("")
     public String getAllAttractions(Model model) {
-        model.addAttribute("attractions", touristService.getAllTouristAttractions());
+        model.addAttribute("attractions", touristServiceDB.getAllTouristAttractions());
         return "attractionList";
     }
 

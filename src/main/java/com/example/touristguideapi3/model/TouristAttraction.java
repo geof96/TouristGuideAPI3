@@ -18,6 +18,12 @@ public class TouristAttraction {
         this.tagList = tagList;
     }
 
+    public TouristAttraction(String name, String description, String city) {
+        this.name = name;
+        this.description = description;
+        this.city = city;
+    }
+
     public TouristAttraction() {
 
     }

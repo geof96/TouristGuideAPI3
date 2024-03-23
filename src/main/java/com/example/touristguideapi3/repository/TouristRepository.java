@@ -1,13 +1,11 @@
 package com.example.touristguideapi3.repository;
-
 import com.example.touristguideapi3.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Repository
+
 public class TouristRepository {
 
     private List<TouristAttraction> touristAttractions = new ArrayList<>(List.of(
@@ -21,7 +19,6 @@ public class TouristRepository {
 
 
     public List<TouristAttraction> getAllTouristAttractions() {
-
         return touristAttractions;
     }
 
