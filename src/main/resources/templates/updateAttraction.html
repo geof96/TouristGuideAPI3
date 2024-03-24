@@ -10,7 +10,7 @@
     <form action="/attractions/update" method="post">
 
         <label for="name">Name:</label><br>
-        <input type="text" id="name" th:name="${attraction.name}" th:value="${attraction.name}" readonly><br>
+        <input type="text" id="name" name="name" th:value="${attraction.name}" readonly><br>
 
         <label for="description">Description:</label><br>
         <textarea id="description" name="description" th:value="${attraction.description}"></textarea><br>
@@ -22,7 +22,8 @@
 
         <label for="tags">Tags:</label><br>
         <div th:each="tag : ${tags}">
-            <input type="checkbox" id="tags" name="tags" th:value="${tag}" th:text="${tag}"><br>
+            <input type="checkbox" id="tags" name="tags" th:value="${tag}"
+                   th:text="${tag}" th:checked="${attraction.tagList.contains(tag)}"><br>
         </div>
         <input type="submit" value="Submit" class="submit-button">
         <input type="submit" th:href="@{/attractions}" value="Cancel" class="submit-button">

@@ -29,18 +29,12 @@ public class TouristController {
         return "attractionList";
     }
 
-    @GetMapping("searchAttraction/{name}")
-    public String getAttractionById(@PathVariable String name, Model model) {
-        model.addAttribute("id", touristService.getTouristAttractionById(name));
-        return "id";
-    }
-
 
     @GetMapping("/add")
     public String addAttraction(Model model) {
         model.addAttribute("attraction", new TouristAttraction());
-        model.addAttribute("tags", touristService.getTagList());
-        model.addAttribute("city", touristService.getCityList());
+        model.addAttribute("tags", touristServiceDB.getAllTags());
+        model.addAttribute("city", touristServiceDB.getAllCities());
         return "addAttraction";
     }
 
@@ -53,8 +47,8 @@ public class TouristController {
     @GetMapping("/{name}/edit")
     public String editAttraction(@PathVariable String name, Model model) {
         model.addAttribute("attraction", touristService.getTouristAttractionById(name));
-        model.addAttribute("city", touristService.getCityList());
-        model.addAttribute("tags", touristService.getTagList2());
+        model.addAttribute("city", touristServiceDB.getAllCities());
+        model.addAttribute("tags", touristServiceDB.getAllTags());
 
 
         return "updateAttraction";
@@ -62,14 +56,14 @@ public class TouristController {
 
     @PostMapping("/update")
     public String updateAttraction(@ModelAttribute TouristAttraction touristAttraction, Model model) {
-        model.addAttribute("editedAttraction", touristService.updateTouristAttraction(touristAttraction));
+        model.addAttribute("editedAttraction", touristServiceDB.updateTouristAttraction(touristAttraction));
         return "redirect:/attractions";
     }
 
     @GetMapping("{name}/deleteAttraction")
     public String deleteAttraction(@PathVariable String name, Model model) {
         if (touristService.getAllTouristAttractions() != null) {
-            model.addAttribute("delete", touristService.deleteTouristAttraction(name));
+            model.addAttribute("delete", touristServiceDB.deleteTouristAttraction(name));
             return "redirect:/attractions";
         }
         return "redirect/attractions";
@@ -77,8 +71,8 @@ public class TouristController {
 
     @GetMapping("/{name}/tags")
     public String getTags(@PathVariable String name, Model model) {
-        model.addAttribute("tags", touristService.getAttractionsTags(name));
-        model.addAttribute("attractions", touristService.getAllTouristAttractions());
+        model.addAttribute("tags", touristServiceDB.getTagsForTouristAttraction(name));
+        model.addAttribute("attractions", touristServiceDB.getAllTouristAttractions());
         model.addAttribute("name", name);
         return "tags";
     }
